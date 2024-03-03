@@ -1,0 +1,48 @@
+{% extends 'hm/hmbase.html' %}
+{% block content %}
+<br><br><br><br><br>
+<marquee><h1>TOTAL_TEACHER_LIST</h1></marquee>
+<table  border="10px" align="center" >
+    <tr>       
+        <th>Tecname</th>
+        <th>Tecpassword</th>
+        <th>Tecemail</th>
+        <th>Tecqulfication</th>
+        <th>TecExperence</th>
+        <th>Tecjoining</th>  
+        <th>Tecvillage</th>              
+        <th>Tecphoto</th>
+        <th>delete</th>  
+        <th>update</th> 
+    </tr>
+    {% for item in data %}
+    <tr>
+        
+        <td>{{ item.Tecname }}</td>
+        <td>{{ item.Tecpassword }}</td>
+        <td>{{ item.Tecemail }}</td>
+        <td>{{ item.Tecqulfication }}</td>
+        <td>{{ item.TecExperence }}</td>
+        <td>{{ item.Tecjoining }}</td>
+        <td>{{ item.Tecvillage }}</td>        
+        <td><img src="{{ item.Tecphoto.url }}" alt="{{ item.Tecname }} Photo" width="60px" height="60px"></td>
+        <td>
+             <form action="{% url  'delete' id=item.id %}" method="post">
+
+               {% csrf_token %}
+               <button type="submit"><span style="color: red;">&#x1F5D1;</span></button>             
+            </form>
+          </td>  
+          <!-- Update icon -->
+          <td>
+           <a href="">
+            <span style="color: green;">&#x270E;</span></a> 
+          </td>  
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">No results found.</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

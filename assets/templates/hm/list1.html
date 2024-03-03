@@ -1,0 +1,48 @@
+{% extends 'hm/hmbase.html' %}
+{% block content %}
+<br><br><br><br><br>
+<marquee><h1>TOTAL_STUDENT_LIST</h1></marquee>
+
+<table border="5px" align="center">
+    <tr>    
+        <th>studentname</th>
+        <th>studentemail</th>
+        <th>studentvillage</th>
+        <th>studentpassword</th>
+        <th>studentbranch</th>
+        <th>studentphno</th> 
+        <th>delete</th>  
+        <th>update</th> 
+
+
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{i.studentname}}</td>
+        <td>{{i.studentemail}}</td>
+        <td>{{i.studentvillage}}</td>
+        <td>{{i.studentpassword}}</td>
+        <td>{{i.studentbranch}}</td>
+        <td>{{i.studentphno}}</td>       
+      <!-- Delete icon -->
+      <td>
+        <form action="{% url  'Delete_record' i.id %}" method="post">
+           {% csrf_token %}
+           <button type="submit"><span style="color: red;">&#x1F5D1;</span></button>             
+        </form>
+      </td>  
+      <!-- Update icon -->
+      <td>
+       <a href="{% url 'Update_record' i.id %}">
+        <span style="color: green;">&#x270E;</span>
+       
+   </a>   
+      
+
+        </tr>
+    {% endfor %}
+
+
+</table>
+
+{% endblock %}

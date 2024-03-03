@@ -1,0 +1,20 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+<marquee><h1>STUDENT HOME PAGE</h1></marquee>
+<form align="center" method="post">
+   {% csrf_token %}
+   {{form.as_p}}
+   <input type="submit" value="Update">
+    <a herf="{% url 'userlist' %}"></a>   
+</form>
+{% endblock %}
+
+
+
+
+
+
+
+ 
+
+ 
